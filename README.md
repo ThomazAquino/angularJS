@@ -1,1 +1,1 @@
-# angularJS
+# Initials studies of angularJS

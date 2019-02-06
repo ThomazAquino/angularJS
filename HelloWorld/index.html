@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="helloWorld">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+    <script src="angular.js"></script>
+
+    <script>
+        // angular é baseado em modulos 
+        angular.module("helloWorld", []); // Cria o modulo.  [] é a injeçao de novos modulos, fazer a importaçao de novos modulos que irao trazer componentes, diretivas, etc 
+        angular.module("helloWorld").controller("HellowWorldCtrl", function ($scope) { // Localiza o modulo  // $scope que compartilha view e controler, esta sendo injetado como dependencia pra dentro do controller, é a porta de entrada para a view
+            $scope.messagem = "Hello World!";
+
+        });
+        // 
+    </script>
+</head>
+<body>
+    
+    <div ng-controller="HellowWorldCtrl"> <!-- a view nao é um arquivo, é simplesmente um local onde colocamos o atributo ng-controller. Posso ter no mesmo HTML varios ng-controlers associando varias views -->
+        {{messagem}} <!-- {{ }} = interpolaçao da expressao. Com isso da pra mostrar qualquer coisa que esteja em scope e nao precisa escrever scope. {{scope.messagem}} porque ja esta em helloWordcontrolle ja esta acessando o scope -->
+
+    </div>
+</body>
+
+</html>
