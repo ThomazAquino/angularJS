@@ -24,10 +24,12 @@
 
     <script>
         angular.module("listaTelefonica", []); // cria o modulo
-        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) { // Localiza o modulo, scope é quem faz a mediaçao entre view e controler 
+        angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope, $log) { // Localiza o modulo, scope é quem faz a mediaçao entre view e controler 
             $scope.app = "Lista Telefonica";
 
-            $scope.contatos = [ //Cria um array de contatos
+            $log.info('asas');
+
+            $scope.contatos = [ //Criando um array de contatos
                 {nome: "Pedro", telefone: "99998888"},
                 {nome: "Ana", telefone: "99997777"},
                 {nome: "Maria", telefone: "99996666"}

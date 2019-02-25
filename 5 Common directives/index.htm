@@ -1,0 +1,86 @@
+<!DOCTYPE html> <!-- sessao 4 aula 21 -->
+<html lang="en-us" ng-app="myApp">
+<head>
+<title>Introduction to AngularJS</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta charset="UTF-8">
+
+<!-- load bootstrap and fontawesome via CDN -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+<style>
+html, body
+{
+font-size: 1.1em;
+}
+</style>
+
+<!-- load angular via CDN -->
+<script src="//code.angularjs.org/1.7.7/angular.min.js"></script>
+<script src="//code.angularjs.org/1.7.7/angular-messages.js"></script>
+<script src="//code.angularjs.org/1.7.7/angular-resource.min.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">AngularJS</a>
+				</div>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
+	<div class="container">
+
+		<div ng-controller="mainController"> <!-- ng-controller -->
+
+		<div>
+				<label for="">What is your twitter handle?</label>
+				<input type="text" name="" id="" ng-model="NomeQualquer"> <!-- Ng-model associa o valor desse elmento a uma variavel especifica --> <!-- Ele procura no $scope a variavel handle e associa -->
+		</div>
+
+		 <div class="alert" ng-if="NomeQualquer.length !== characters"> <!-- dentro do ng-if pode ir um operador ou uma funçao, qualquer coisa que volte true ou false como valor. Se for true ele parece, se for falso nao aparece no DOM -->
+			Must Be 5 characters!
+		</div>
+
+		<div class="alert" ng-show="NomeQualquer.length !== characters"> <!-- ng-show - mostra se a expressao for true, só que quando é falso ele nao desaparece do dom, só ganha uma classe chamada ng-hide que da display: none !important -->
+			--- ng-show ---!
+		</div>
+
+		<div class="alert" ng-show="NomeQualquer.length !== characters"> <!-- o contrario do show -->
+			--- ng-hide ---!
+		</div>
+
+		<hr><hr><hr><hr>
+
+		<div class="alert" ng-class="{ 'alert-warning': NomeQualquer.length < characters, 'alert-danger' : NomeQualquer.length > characters}" ng-show="NomeQualquer.length !== characters"> <!-- ng-class - controla as classes, dentro dele vai um objeto json. { 'ClasseParaAdd' : condiçao, ... }-->
+			<div ng-show="NomeQualquer.length < characters">
+				Voce digitou menos que 5 caracters
+			</div>
+			<div ng-show="NomeQualquer.length > characters">
+				Voce digitou mais do que 5 caracters
+			</div>
+		</div>
+
+		<hr>
+
+		<h1>twitter.com/{{ NomeQualquer }}</h1>
+		<h2>twitter.com/{{ lowerCaseCoisas() }}</h2>
+
+		<h3>Rules</h3>
+		<ul>
+			<li ng-repeat="rule in rules"> <!-- ng-repeat é como um forIn -->
+				{{ rule.rulename }}
+			</li> 
+		</ul>
+
+		</div>
+	</div>
+</body>
+</html>
